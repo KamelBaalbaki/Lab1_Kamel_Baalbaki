@@ -30,8 +30,20 @@ struct ContentView: View {
                             .frame(width: 90, height: 90)
                             .foregroundColor(game.isCorrectSelection ? .green : .red)
                     }
-            
     }
+        HStack(spacing: 30) {
+            Button {
+                game.selectAnswer(isPrimeSelected: true)
+            } label: {
+                
+                Text("Prime")
+                    .frame(width: 140, height: 50)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+            
+            
 }
 
 #Preview {
