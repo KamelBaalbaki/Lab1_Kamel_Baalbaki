@@ -14,23 +14,23 @@ struct ContentView: View {
     var body: some View {
         
         VStack(spacing: 40) {
-
-                    Text("Prime Number Game")
-                        .font(.largeTitle)
-                        .bold()
-
-                    Text("\(game.currentNumber)")
-                        .font(.system(size: 80))
-                        .fontWeight(.bold)
-
-                    if game.showResultIcon {
-
-                        Image(systemName: game.isCorrectSelection ? "checkmark.circle.fill" : "xmark.circle.fill")
-                            .resizable()
-                            .frame(width: 90, height: 90)
-                            .foregroundColor(game.isCorrectSelection ? .green : .red)
-                    }
-    }
+            
+            Text("Prime Number Game")
+                .font(.largeTitle)
+                .bold()
+            
+            Text("\(game.currentNumber)")
+                .font(.system(size: 80))
+                .fontWeight(.bold)
+            
+            if game.showResultIcon {
+                
+                Image(systemName: game.isCorrectSelection ? "checkmark.circle.fill" : "xmark.circle.fill")
+                    .resizable()
+                    .frame(width: 90, height: 90)
+                    .foregroundColor(game.isCorrectSelection ? .green : .red)
+            }
+        }
         HStack(spacing: 30) {
             Button {
                 game.selectAnswer(isPrimeSelected: true)
@@ -43,8 +43,19 @@ struct ContentView: View {
                     .cornerRadius(10)
             }
             
-            
-}
+            Button {
+                game.selectAnswer(isPrimeSelected: false)
+            } label: {
+                
+                Text("Not Prime")
+                    .frame(width: 140, height: 50)
+                    .background(Color.orange)
+                    .foregroundColor(.white)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+        }
+    }
 
 #Preview {
     ContentView()
