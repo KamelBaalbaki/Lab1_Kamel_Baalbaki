@@ -104,5 +104,14 @@ class GameLogic: ObservableObject {
         }
     }
     
+    func nextRound() {
+
+            if showDialog { return }
+
+            showResultIcon = false
+            currentNumber = Int.random(in: 1...100)
+
+            startTimer()
+        }
     
 }
