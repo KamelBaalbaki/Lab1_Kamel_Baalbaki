@@ -21,6 +21,19 @@ class GameLogic: ObservableObject {
     private var timeRemaining: Int = 5
     private var answered: Bool = false
     
+    func isPrime(_ number: Int) -> Bool {
+
+            if number < 2 { return false }
+
+            for i in 2..<number {
+                if number % i == 0 {
+                    return false
+                }
+            }
+
+            return true
+        }
+    
     func startTimer() {
         
         timer?.invalidate()
@@ -63,4 +76,6 @@ class GameLogic: ObservableObject {
             self.nextRound()
         }
     }
+    
+    
 }
