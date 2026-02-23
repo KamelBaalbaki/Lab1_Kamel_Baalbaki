@@ -20,16 +20,16 @@ struct ContentView: View {
                             endPoint: .bottomTrailing
                         )
                         .ignoresSafeArea()
+            
+            VStack(spacing: 30) {
+
+                            Text("Prime Number Game")
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundColor(.white)
+
+                            Spacer()
+
         }
-        VStack(spacing: 40) {
-
-            Text("Prime Number Game")
-                .font(.largeTitle)
-                .bold()
-
-            Text("\(game.currentNumber)")
-                .font(.system(size: 80))
-                .fontWeight(.bold)
 
             if game.showResultIcon {
 
