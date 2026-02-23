@@ -21,6 +21,10 @@ class GameLogic: ObservableObject {
     private var timeRemaining: Int = 5
     private var answered: Bool = false
     
+    init() {
+        startTimer()
+    }
+    
     func isPrime(_ number: Int) -> Bool {
         
         if number < 2 { return false }
