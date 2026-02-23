@@ -42,4 +42,25 @@ class GameLogic: ObservableObject {
         timer?.invalidate()
         timer = nil
     }
+    
+    func timeOut() {
+        
+        if answered { return }
+        
+        answered = true
+        
+        stopTimer()
+        
+        wrongAnswers += 1
+        attempts += 1
+        
+        isCorrectSelection = false
+        showResultIcon = true
+        
+        checkGameEnd()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.nextRound()
+        }
+    }
 }
