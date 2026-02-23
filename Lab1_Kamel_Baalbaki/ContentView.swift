@@ -13,6 +13,14 @@ struct ContentView: View {
 
     var body: some View {
 
+        ZStack {
+            LinearGradient(
+                            colors: [.purple.opacity(0.4), .blue.opacity(0.5)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                        .ignoresSafeArea()
+        }
         VStack(spacing: 40) {
 
             Text("Prime Number Game")
