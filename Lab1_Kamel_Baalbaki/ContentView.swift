@@ -15,7 +15,6 @@ struct ContentView: View {
 
         ZStack {
 
-            // Background
             LinearGradient(
                 colors: [.purple.opacity(0.4), .blue.opacity(0.5)],
                 startPoint: .topLeading,
@@ -31,22 +30,20 @@ struct ContentView: View {
 
                 Spacer()
 
-                // Number Card
                 ZStack {
 
                     RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.white)
+                        .fill(Color.white.opacity(0.20))
                         .shadow(radius: 10)
 
                     Text("\(game.currentNumber)")
                         .font(.system(size: 70, weight: .bold))
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
 
                 }
                 .frame(width: 220, height: 160)
                 .padding()
 
-                // Result Icon
                 if game.showResultIcon {
 
                     Image(systemName: game.isCorrectSelection ? "checkmark.circle.fill" : "xmark.circle.fill")
@@ -56,7 +53,6 @@ struct ContentView: View {
                         .transition(.scale)
                 }
 
-                // Buttons
                 HStack(spacing: 25) {
 
                     Button {
@@ -88,7 +84,6 @@ struct ContentView: View {
 
                 Spacer()
 
-                // Score Card
                 HStack(spacing: 40) {
 
                     VStack {
