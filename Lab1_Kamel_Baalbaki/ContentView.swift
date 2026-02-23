@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var game = GameLogic()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        
+        VStack(spacing: 40) {
+
+                    Text("Prime Number Game")
+                        .font(.largeTitle)
+                        .bold()
+
+                    Text("\(game.currentNumber)")
+                        .font(.system(size: 80))
+                        .fontWeight(.bold)
+
+                    if game.showResultIcon {
+
+                        Image(systemName: game.isCorrectSelection ? "checkmark.circle.fill" : "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 90, height: 90)
+                            .foregroundColor(game.isCorrectSelection ? .green : .red)
+                    }
+            
     }
 }
 
