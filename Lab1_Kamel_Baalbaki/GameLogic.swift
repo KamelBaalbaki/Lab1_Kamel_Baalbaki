@@ -34,6 +34,33 @@ class GameLogic: ObservableObject {
             return true
         }
     
+    func selectAnswer(isPrimeSelected: Bool) {
+
+            if answered { return }
+            answered = true
+
+            stopTimer()
+
+            let correct = isPrime(currentNumber)
+
+            if correct == isPrimeSelected {
+                correctAnswers += 1
+                isCorrectSelection = true
+            } else {
+                wrongAnswers += 1
+                isCorrectSelection = false
+            }
+
+            attempts += 1
+            showResultIcon = true
+
+            checkGameEnd()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.nextRound()
+            }
+        }
+    
     func startTimer() {
         
         timer?.invalidate()
