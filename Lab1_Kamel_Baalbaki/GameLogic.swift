@@ -21,5 +21,22 @@ class GameLogic: ObservableObject {
     private var timeRemaining: Int = 5
     private var answered: Bool = false
     
+    func startTimer() {
+        
+        timer?.invalidate()
+        
+        timeRemaining = 5
+        answered = false
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            
+            self.timeRemaining -= 1
+            
+            if self.timeRemaining == 0 {
+                self.timeOut()
+            }
+        }
+    }
     
+   
 }
