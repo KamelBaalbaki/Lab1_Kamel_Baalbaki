@@ -22,44 +22,44 @@ class GameLogic: ObservableObject {
     private var answered: Bool = false
     
     func isPrime(_ number: Int) -> Bool {
-
-            if number < 2 { return false }
-
-            for i in 2..<number {
-                if number % i == 0 {
-                    return false
-                }
+        
+        if number < 2 { return false }
+        
+        for i in 2..<number {
+            if number % i == 0 {
+                return false
             }
-
-            return true
         }
+        
+        return true
+    }
     
     func selectAnswer(isPrimeSelected: Bool) {
-
-            if answered { return }
-            answered = true
-
-            stopTimer()
-
-            let correct = isPrime(currentNumber)
-
-            if correct == isPrimeSelected {
-                correctAnswers += 1
-                isCorrectSelection = true
-            } else {
-                wrongAnswers += 1
-                isCorrectSelection = false
-            }
-
-            attempts += 1
-            showResultIcon = true
-
-            checkGameEnd()
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.nextRound()
-            }
+        
+        if answered { return }
+        answered = true
+        
+        stopTimer()
+        
+        let correct = isPrime(currentNumber)
+        
+        if correct == isPrimeSelected {
+            correctAnswers += 1
+            isCorrectSelection = true
+        } else {
+            wrongAnswers += 1
+            isCorrectSelection = false
         }
+        
+        attempts += 1
+        showResultIcon = true
+        
+        checkGameEnd()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.nextRound()
+        }
+    }
     
     func startTimer() {
         
@@ -105,21 +105,36 @@ class GameLogic: ObservableObject {
     }
     
     func nextRound() {
-
-            if showDialog { return }
-
-            showResultIcon = false
-            currentNumber = Int.random(in: 1...100)
-
-            startTimer()
-        }
+        
+        if showDialog { return }
+        
+        showResultIcon = false
+        currentNumber = Int.random(in: 1...100)
+        
+        startTimer()
+    }
     
     func checkGameEnd() {
-
-            if attempts >= 10 {
-                stopTimer()
-                showDialog = true
-            }
+        
+        if attempts >= 10 {
+            stopTimer()
+            showDialog = true
         }
-
+    }
+    
+    func resetGame() {
+        
+        stopTimer()
+        
+        correctAnswers = 0
+        wrongAnswers = 0
+        attempts = 0
+        showDialog = false
+        showResultIcon = false
+        answered = false
+        
+        currentNumber = Int.random(in: 1...100)
+        
+        startTimer()
+    }
 }
