@@ -55,7 +55,18 @@ struct ContentView: View {
                     .cornerRadius(10)
             }
         }
-    }
+        
+        VStack(spacing: 10) {
+
+                        Text("Correct: \(game.correctAnswers)")
+                        Text("Wrong: \(game.wrongAnswers)")
+                        Text("Attempts: \(game.attempts)/10")
+
+                    }
+                    .font(.headline)
+
+                }
+}
 
 #Preview {
     ContentView()
