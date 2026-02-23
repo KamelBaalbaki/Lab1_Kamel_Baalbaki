@@ -28,16 +28,32 @@ struct ContentView: View {
                                 .foregroundColor(.white)
 
                             Spacer()
+                
+                ZStack {
+
+                                    RoundedRectangle(cornerRadius: 25)
+                                        .fill(Color.white)
+                                        .shadow(radius: 10)
+
+                                    Text("\(game.currentNumber)")
+                                        .font(.system(size: 70, weight: .bold))
+                                        .foregroundColor(.black)
+
+                                }
+                                .frame(width: 220, height: 160)
+                                .padding()
+
+                                // Result Icon
+                                if game.showResultIcon {
+
+                                    Image(systemName: game.isCorrectSelection ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                        .resizable()
+                                        .frame(width: 80, height: 80)
+                                        .foregroundColor(game.isCorrectSelection ? .green : .red)
+                                        .transition(.scale)
+                                }
 
         }
-
-            if game.showResultIcon {
-
-                Image(systemName: game.isCorrectSelection ? "checkmark.circle.fill" : "xmark.circle.fill")
-                    .resizable()
-                    .frame(width: 90, height: 90)
-                    .foregroundColor(game.isCorrectSelection ? .green : .red)
-            }
 
             HStack(spacing: 30) {
 
