@@ -114,4 +114,12 @@ class GameLogic: ObservableObject {
             startTimer()
         }
     
+    func checkGameEnd() {
+
+            if attempts >= 10 {
+                stopTimer()
+                showDialog = true
+            }
+        }
+
 }
